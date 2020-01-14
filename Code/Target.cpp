@@ -1,3 +1,5 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
 #include "Target.h"
 #include "Engine/Engine.h"
 #include<time.h>
@@ -36,3 +38,4 @@ void ATarget::ChangePos()
 	RandY = FMath::FRandRange(-630, 1800);
 	GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("RandZ: %f"), RandZ));
 }
+
