@@ -14,6 +14,10 @@ class AIMBOOSTERPROTOTYPE_API ATarget : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ATarget();
+	virtual void SetLifeSpan(float InlifeSpan) override;
+	void SetActive(bool InActive);
+	bool isActive();
+
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,11 +27,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	FVector newLocation;
-	float RandX;
-	float RandY;
-	float RandZ;
-
-	void ChangePos();
+	float Lifespan = 5.0f;
+	FTimerHandle lifeSpanTimer;
+	bool Active;
+	void Deactivate();
 	
 };

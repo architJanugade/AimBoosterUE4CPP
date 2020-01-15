@@ -83,6 +83,8 @@ public:
 
 	UPROPERTY(EditAnywhere)
 		ATarget* MyTarget;
+
+	float Score;
 protected:
 	
 	/** Fires a projectile. */

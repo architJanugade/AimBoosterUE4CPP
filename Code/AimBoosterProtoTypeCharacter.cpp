@@ -20,6 +20,7 @@ DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
 
 AAimBoosterProtoTypeCharacter::AAimBoosterProtoTypeCharacter()
 {
+	Score = 0.f;
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
 
@@ -152,12 +153,17 @@ void AAimBoosterProtoTypeCharacter::OnFire()
 	{
 		if (outHit.bBlockingHit)
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Hittin: %s"), *outHit.GetActor()->GetName()));
-			FString hitResultName = *outHit.GetActor()->GetName();
+			//GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Hittin: %s"), *outHit.GetActor()->GetName()));
+			//FString hitResultName = *outHit.GetActor()->GetName();
 			MyTarget = Cast<ATarget>(outHit.GetActor());
+			if(MyTarget == nullptr)
+				UE_LOG(LogTemp, Warning, TEXT("not Casted"));
 			if (MyTarget && MyTarget == outHit.GetActor()) {
-				MyTarget->ChangePos();
-				GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("Casted To RandomActor")));
+				//Do Something
+				/*MyTarget->ChangePos();*/
+				Score++;
+				MyTarget->SetActive (false);
+				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Score: %f") , Score));
 			}
 
 
